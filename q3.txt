@@ -1,0 +1,85 @@
+پوسترِ بی‌نام سینما
+
+محدودیت زمان: ۱ ثانیه
+
+محدودیت حافظه: ۲۵۶ مگابایت
+
+صورت سؤال
+سینمای کوچکی اطلاعات فیلم‌هایش را به‌شکل Map نگه می‌دارد. گاهی عنوان یک فیلم هنوز ثبت نشده است. روی صفحه باید به‌جای عنوان نامشخص Untitled نشان داده شود، اما در دادهٔ اصلی باید همان null باقی بماند؛ چون «عنوان ثبت نشده» با «عنوان فیلم واقعاً Untitled است» یکسان نیست.
+
+کلاس Poster را با فیلدهای زیر بنویسید:
+
+
+final int id;
+
+final String? title;
+
+final int likes;
+Dart
+این کلاس باید دو متد تبدیل داده داشته باشد:
+
+
+factory Poster.fromJson(Map<String, dynamic> json)
+
+Map<String, dynamic> toJson()
+Dart
+کلیدهای Map دقیقاً id، title و likes هستند. کلاس دیگری به نام PosterFormatter بسازید که متد زیر را داشته باشد:
+
+
+String displayTitle(Poster poster)
+Dart
+این متد عنوان قابل‌نمایش را برمی‌گرداند؛ اگر عنوان null باشد، Untitled برمی‌گرداند. PosterFormatter نباید دادهٔ ذخیره‌شده در Poster را تغییر دهد.
+
+ورودی
+ورودی، یک Map<String, dynamic> با کلیدهای گفته‌شده است. id و likes از نوع int و title از نوع String? هستند. مقدار likes نامنفی است.
+
+خروجی
+متد displayTitle() یک رشته برمی‌گرداند. متد toJson() نیز باید همان مقادیر اصلی id، title و likes را در Map خروجی نگه دارد.
+
+مثال
+نمونهٔ ۱
+
+final poster = Poster.fromJson({
+
+  'id': 11,
+
+  'title': null,
+
+  'likes': 3,
+
+});
+
+print(PosterFormatter().displayTitle(poster));
+
+print(poster.toJson()['title']);
+Dart
+
+Untitled
+
+null
+Plain text
+نمونهٔ ۲
+
+final poster = Poster.fromJson({
+
+  'id': 12,
+
+  'title': 'Untitled',
+
+  'likes': 0,
+
+});
+
+print(PosterFormatter().displayTitle(poster));
+
+print(poster.toJson()['title']);
+Dart
+
+Untitled
+
+Untitled
+Plain text
+نکات
+فیلدهای مدل باید final باشند. تبدیل داده فقط در Poster و ساخت عنوان نمایشی فقط در PosterFormatter انجام شود.
+
+در کنار fromJson()، toJson() و displayTitle()، با کامنت‌های روشن تفاوت دادهٔ ذخیره‌شده و متن نمایشی، حفظ مقدار null هنگام تبدیل داده، نقش فیلدهای final و جداسازی مسئولیت دو کلاس را توضیح دهید.
