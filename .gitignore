@@ -1,0 +1,26 @@
+# خروجی‌ها و فایل‌های موقت دارت
+.dart_tool/
+.packages
+.pub/
+.pub-cache/
+build/
+coverage/
+*.dill
+*.snapshot
+
+# ZIPهای قابل ساخت برای تحویل تمرین
+/Q[1-5].zip
+
+# تنظیمات محلی ادیتور
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# فایل‌های موقت سیستم‌عامل و لاگ‌ها
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
